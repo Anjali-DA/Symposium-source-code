@@ -1,20 +1,29 @@
 # Symposium:R-Prediction 
-# Abstract
 
 
-# Introduction
+
+# Abstract:
 
 
-# Proposed Work
+# Introduction:
+
+
+# Proposed Work:
+ # Dataset
  
-# Contribution
+
+ 
+ 
+# Contribution:
 
 
-# Flowchart/Pictorial Representation
+# Flowchart/Pictorial Representation:
 
-# Results
+# Results:
 
 
-# Conclusion
+# Conclusion:
 
-# References
+# References:
+Detecting Hospital Acquired Infections using Machine Learning - MARKUS NÄSMAN
+"A Bayesian network approach for predicting the risk of hospital-acquired Clostridium difficile infection" by Sung et al. (2016)
