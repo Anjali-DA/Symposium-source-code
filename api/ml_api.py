@@ -50,7 +50,7 @@ class model_input(BaseModel):
     
 
 # loading the hai_model
-hai_model = pickle.load(open('hai_model.sav', 'rb'))
+hai_model = pickle.load(open('hai_pred_model.sav', 'rb'))
 predicted_values = ''
 
 
@@ -166,8 +166,6 @@ def hai_prediction(input_param : model_input):
     pId = input_dict['PatientID']
     age = input_dict['Age']
     sex = input_dict['Sex']
-    race = input_dict['Race']
-    ethnicity = input_dict['Ethnicity']
     medical_history = input_dict['MedicalHistory']
     hospitalization_data = input_dict['HospitalizationData']
     laboratory_data = input_dict['LaboratoryData']
@@ -177,12 +175,11 @@ def hai_prediction(input_param : model_input):
     symptoms = input_dict['Symptoms']
     signs = input_dict['Signs']
     treatment = input_dict['Treatment']
-    outcomes = input_dict['Outcomes']
-    unnamed = input_dict['Unnamed']
+
  
-    input_list = [pId, age, sex, race, ethnicity, medical_history, hospitalization_data, laboratory_data, imaging_data, microbiology_data, risk_factors, symptoms, signs, treatment, outcomes, unnamed]
+    input_list = [pId, age, sex, medical_history, hospitalization_data, laboratory_data, imaging_data, microbiology_data, risk_factors, symptoms, signs, treatment]
     
-    columns = ['Patient ID','Age', 'Sex', 'Race', 'Ethnicity', 'Medical History', 'Hospitalization Data', 'Laboratory Data', 'Imaging Data', 'Microbiology Data', 'Risk Factors', 'Symptoms', 'Signs', 'Treatment', 'Outcomes','Unnamed: 16']
+    columns = ['Patient ID','Age', 'Sex', 'Medical History', 'Hospitalization Data', 'Laboratory Data', 'Imaging Data', 'Microbiology Data', 'Risk Factors', 'Symptoms', 'Signs', 'Treatment']
     df_new = pd.DataFrame([input_list], columns=columns)
     test_df = Processing(df_new)
     X_data = test_df.process_data()
@@ -209,7 +206,7 @@ def hai_prediction(input_param : model_input):
     
     # changing predict to human readable format
     
-    label_mapping = {-1: 'None', 0: 'Other', 1: 'Pneumonia', 2: 'Influenza', 3: 'Unspecified Infection', 4: 'COVID-19', 5: 'Respiratory Infection'}
+    label_mapping = {-1: 'None', 0: 'Other', 1: 'Pneumonia', 2: 'Influenza', 3: 'COPD', 4: 'COVID-19', 5: 'Respiratory Infection'}
 
     # Map the predicted values to their corresponding strings
     predict_strings = [label_mapping[label] for label in predict]
