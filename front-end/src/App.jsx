@@ -12,12 +12,12 @@ function App() {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/diagonise'>About Us</Link>
+            <Link to='/report'>Get Report</Link>
           </li>
         </ul>
         <Routes>
           <Route exact path='/' element={<Home />}></Route>
-          <Route exact path='/diagonise' element={<PatientForm />}></Route>
+          <Route exact path='/report' element={<PatientForm />}></Route>
         </Routes>
       </div>
     </Router>

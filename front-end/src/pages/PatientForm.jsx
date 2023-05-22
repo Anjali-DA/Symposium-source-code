@@ -19,9 +19,7 @@ import {
 const PatientForm = () => {
   const form = useForm({
     initialValues: {
-      name: '',
       age: '',
-      email: '',
       sex: '',
       medicalHistory: '',
       hospitalizationData: '',
@@ -53,9 +51,65 @@ const PatientForm = () => {
   });
 
   return (
-    <Paper mx='auto' shadow='lg' p='lg' bg={'white'}>
+    <Paper
+      mx='auto'
+      shadow='lg'
+      p='lg'
+      bg={'white'}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Title order={4} my={10}>
+        Enter your medical data to get info about infections
+      </Title>
       <form
-        onSubmit={form.onSubmit((values) => console.log(values))}
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const {
+            age,
+            sex,
+            medicalHistory,
+            hospitalizationData,
+            laboratoryData,
+            imagingData,
+            microbiologyData,
+            riskFactors,
+            symptoms,
+            signs,
+            treatment,
+          } = form.values;
+          const requestDataBody = {
+            PatientID: Math.random().toString(36).slice(0, 10),
+            Age: age,
+            Sex: sex,
+            MedicalHistory: medicalHistory,
+            HospitalizationData: hospitalizationData,
+            LaboratoryData: laboratoryData,
+            ImagingData: imagingData,
+            MicrobiologyData: microbiologyData,
+            RiskFactors: riskFactors,
+            Symptoms: symptoms,
+            Signs: signs,
+            Treatment: treatment,
+          };
+          console.log(requestDataBody);
+          form.reset();
+          try {
+            const URL = 'someURL.com/getData';
+            const res = await fetch(URL);
+            if (!res.ok) {
+              return new Error('Error in posting data');
+            }
+            const resData = await res.json();
+            console.log(resData);
+          } catch (e) {
+            console.log(e);
+          }
+        }}
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -63,30 +117,15 @@ const PatientForm = () => {
         }}
       >
         <Group w={300}>
-          <Title order={2}>Personal Details</Title>
-          <TextInput
-            withAsterisk
-            variant='filled'
-            label='Name'
-            placeholder='John Doe'
-            {...form.getInputProps('name')}
-          />
           <NumberInput
             withAsterisk
             variant='filled'
             label='Age'
             placeholder='22'
-            hideControls
             {...form.getInputProps('age')}
           />
-          <TextInput
-            withAsterisk
-            variant='filled'
-            label='Email'
-            placeholder='your@email.com'
-            {...form.getInputProps('email')}
-          />
           <Select
+            withAsterisk
             label='Sex'
             variant='filled'
             placeholder='Male'
@@ -98,33 +137,25 @@ const PatientForm = () => {
             ]}
             {...form.getInputProps('sex')}
           />
-        </Group>
-        <Group w={300}>
-          <Title order={2}>Medical Details</Title>
           <TextInput
-            withAsterisk
             variant='filled'
             label='Medical History'
             placeholder='Medical'
             {...form.getInputProps('medicalHistory')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Hospitalization Data'
             placeholder='Hospitalization'
-            hideControls
             {...form.getInputProps('hospitalizationData')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Laboratory Data'
             placeholder='Laboratory'
             {...form.getInputProps('laboratoryData')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Imaging Data'
             placeholder='Imaging'
@@ -132,44 +163,39 @@ const PatientForm = () => {
           />
         </Group>
         <Group w={300}>
-          <Title order={2}>Medical Details</Title>
           <TextInput
-            withAsterisk
             variant='filled'
             label='Microbiology Data'
             placeholder='Microbiology'
             {...form.getInputProps('microbiologyData')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Risk Factors'
             placeholder='Risks'
-            hideControls
             {...form.getInputProps('riskFactors')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Symptoms'
             placeholder='Symptoms Faced'
             {...form.getInputProps('symptoms')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Signs'
             placeholder='Signs'
             {...form.getInputProps('signs')}
           />
           <TextInput
-            withAsterisk
             variant='filled'
             label='Treatment'
             placeholder='Treatment Done'
             {...form.getInputProps('treatment')}
           />
-          <Button type='submit'>Submit</Button>
+          <Group position='right'>
+            <Button type='submit'>Submit</Button>
+          </Group>
         </Group>
       </form>
     </Paper>
