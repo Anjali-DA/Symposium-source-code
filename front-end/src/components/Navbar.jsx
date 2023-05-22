@@ -1,34 +1,33 @@
+import { useState } from 'react';
 import {
   createStyles,
-  Menu,
-  Center,
   Header,
   Container,
   Group,
-  Button,
   Burger,
   rem,
+  Text,
+  Button,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-
-const HEADER_HEIGHT = rem(60);
+import { NavLink } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
-  inner: {
-    height: HEADER_HEIGHT,
+  header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: '100%',
   },
 
   links: {
-    [theme.fn.smallerThan('sm')]: {
+    [theme.fn.smallerThan('xs')]: {
       display: 'none',
     },
   },
 
   burger: {
-    [theme.fn.largerThan('sm')]: {
+    [theme.fn.largerThan('xs')]: {
       display: 'none',
     },
   },
@@ -54,52 +53,77 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  linkLabel: {
-    marginRight: rem(5),
+  linkActive: {
+    '&, &:hover': {
+      backgroundColor: theme.fn.variant({
+        variant: 'light',
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
+        .color,
+    },
   },
 }));
-
 const links = [
   {
     label: 'Home',
     link: '/home',
   },
   {
-    label: 'Home',
-    link: '/home',
+    label: 'About',
+    link: '/about',
   },
   {
-    label: 'Home',
-    link: '/home',
+    label: 'Results',
+    link: '/results',
   },
   {
-    label: 'Home',
-    link: '/home',
+    label: 'Features',
+    link: '/features',
   },
 ];
 
-export function HeaderAction() {
-  const { classes } = useStyles();
+const Navbar = () => {
   const [opened, { toggle }] = useDisclosure(false);
+  const [active, setActive] = useState(links[0].link);
+  const { classes, cx } = useStyles();
+
+  const items = links.map((link) => (
+    <NavLink
+      key={link.label}
+      to={link.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.link,
+      })}
+      onClick={(event) => {
+        event.preventDefault();
+        setActive(link.link);
+        window.location.href = link.link;
+      }}
+    >
+      {link.label}
+    </NavLink>
+  ));
 
   return (
-    <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={120}>
-      <Container className={classes.inner} fluid>
-        <Group>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            className={classes.burger}
-            size='sm'
-          />
-        </Group>
+    <Header height={60} mb={120}>
+      <Container className={classes.header}>
+        <Text color='blue' fz={'xl'} ff={'sans-serif'} fw={900}>
+          R-Prediction
+        </Text>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Button radius='xl' h={30}>
-          Get Diagnosed
-        </Button>
+
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size='sm'
+        />
       </Container>
     </Header>
   );
-}
+};
+
+export default Navbar;
