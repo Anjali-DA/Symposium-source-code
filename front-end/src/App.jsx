@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react';
 import Home from './pages/Home';
-import PatientForm from './pages/PatientForm1';
-import { Container } from '@mantine/core';
+import PatientForm from './pages/PatientForm.jsx';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -13,12 +12,12 @@ function App() {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/about'>About Us</Link>
+            <Link to='/diagonise'>About Us</Link>
           </li>
         </ul>
         <Routes>
           <Route exact path='/' element={<Home />}></Route>
-          <Route exact path='/about' element={<PatientForm />}></Route>
+          <Route exact path='/diagonise' element={<PatientForm />}></Route>
         </Routes>
       </div>
     </Router>
