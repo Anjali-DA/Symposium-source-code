@@ -12,8 +12,13 @@ The HRF(High Risk Factor) can be identified by ML. The data that will be used fo
 The use of a dummy dataset, which may not fully represent the complexities of real-world EHR data and further research can improve it.
 
 -Keyword: HAI(Hospital Acquired infections), RP, SVM,ML, Health care
-# Introduction:
 
+# Introduction:
+-HAI is a significant healthcare challenge causing increased morbidity, mortality, and healthcare costs.
+
+-ML techniques have shown promise in identifying HAI risks using EHR data.
+
+-This poster proposes the development of an ML model for HAI risk prediction to enhance patient safety and resource allocation.
 
 # Proposed Work:
 -Collect comprehensive EHR data from patients admitted to a healthcare facility.
