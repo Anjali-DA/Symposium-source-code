@@ -15,7 +15,7 @@ import { IconCheck } from '@tabler/icons-react';
 const useStyles = createStyles((theme) => ({
   inner: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     paddingTop: `calc(${theme.spacing.md} / 4)`,
     paddingBottom: `calc(${theme.spacing.xl} * 4)`,
   },

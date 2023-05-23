@@ -7,6 +7,7 @@ import {
   NumberInput,
   Title,
   Paper,
+  SimpleGrid,
 } from '@mantine/core';
 import {
   useForm,
@@ -15,10 +16,12 @@ import {
   isInRange,
   matches,
 } from '@mantine/form';
+import axios from 'axios';
 
 const PatientForm = () => {
   const form = useForm({
     initialValues: {
+      name: '',
       age: '',
       sex: '',
       medicalHistory: '',
@@ -37,12 +40,11 @@ const PatientForm = () => {
         /^[A-Z][a-zA-Z]*\s([A-Z][a-zA-Z]*\s)?[A-Z][a-zA-Z]*$/.test(value)
           ? null
           : 'Enter a valid name',
-
       age: (value) =>
         value >= 10 && value <= 80
           ? null
           : 'You must be 10-80 years old to register',
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      // email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       sex: (value) =>
         value === 'male' || value === 'female' || value === 'others'
           ? null
@@ -55,16 +57,18 @@ const PatientForm = () => {
       mx='auto'
       shadow='lg'
       p='lg'
-      bg={'white'}
+      bg={'blue'}
       sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '100vw',
+        height: '100vh',
       }}
     >
-      <Title order={4} my={10}>
-        Enter your medical data to get info about infections
+      <Title order={2} my={10}>
+        Enter your Medical Data to get information about infections
       </Title>
       <form
         onSubmit={async (e) => {
@@ -98,17 +102,24 @@ const PatientForm = () => {
           };
           console.log(requestDataBody);
           form.reset();
+          // try {
+          //   const URL = 'someURL.com/getData';
+          //   const res = await fetch(URL, {
+          //     method: 'POST',
+          //     body: JSON.stringify(requestDataBody),
+          //   });
+          //   if (!res.ok) {
+          //     return new Error('Error in posting data');
+          //   }
+          //   const resData = await res.json();
+          //   console.log(resData);
+          // } catch (e) {
+          //   console.log(e);
+          // }
           try {
-            const URL = 'someURL.com/getData';
-            const res = await fetch(URL, {
-              method: 'POST',
-              body: requestDataBody,
+            axios.post(url, requestDataBody).then((response) => {
+              console.log(response.data);
             });
-            if (!res.ok) {
-              return new Error('Error in posting data');
-            }
-            const resData = await res.json();
-            console.log(resData);
           } catch (e) {
             console.log(e);
           }
@@ -117,9 +128,21 @@ const PatientForm = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
+          backgroundColor: 'wheat',
+          padding: 20,
+          borderRadius: 10,
+          boxShadow: '5px 5px 8px #00000050',
         }}
       >
-        <Group w={300}>
+        <SimpleGrid cols={2}>
+          <TextInput
+            w={200}
+            variant='filled'
+            label='Name'
+            placeholder='John Doe'
+            {...form.getInputProps('name')}
+          />
           <NumberInput
             w={200}
             withAsterisk
@@ -128,6 +151,8 @@ const PatientForm = () => {
             placeholder='22'
             {...form.getInputProps('age')}
           />
+        </SimpleGrid>
+        <SimpleGrid cols={2}>
           <Select
             w={200}
             withAsterisk
@@ -149,6 +174,8 @@ const PatientForm = () => {
             placeholder='Medical'
             {...form.getInputProps('medicalHistory')}
           />
+        </SimpleGrid>
+        <SimpleGrid cols={2}>
           <TextInput
             w={200}
             variant='filled'
@@ -163,6 +190,8 @@ const PatientForm = () => {
             placeholder='Laboratory'
             {...form.getInputProps('laboratoryData')}
           />
+        </SimpleGrid>
+        <SimpleGrid cols={2}>
           <TextInput
             w={200}
             variant='filled'
@@ -170,8 +199,6 @@ const PatientForm = () => {
             placeholder='Imaging'
             {...form.getInputProps('imagingData')}
           />
-        </Group>
-        <Group w={300}>
           <TextInput
             w={200}
             variant='filled'
@@ -179,6 +206,8 @@ const PatientForm = () => {
             placeholder='Microbiology'
             {...form.getInputProps('microbiologyData')}
           />
+        </SimpleGrid>
+        <SimpleGrid cols={2}>
           <TextInput
             w={200}
             variant='filled'
@@ -193,6 +222,8 @@ const PatientForm = () => {
             placeholder='Symptoms Faced'
             {...form.getInputProps('symptoms')}
           />
+        </SimpleGrid>
+        <SimpleGrid cols={2}>
           <TextInput
             w={200}
             variant='filled'
@@ -207,10 +238,10 @@ const PatientForm = () => {
             placeholder='Treatment Done'
             {...form.getInputProps('treatment')}
           />
-          <Button type='submit' w={200}>
-            Submit
-          </Button>
-        </Group>
+        </SimpleGrid>
+        <Button type='submit' w={420} fullWidth mt={20}>
+          Submit
+        </Button>
       </form>
     </Paper>
   );
