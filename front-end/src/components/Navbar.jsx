@@ -74,12 +74,12 @@ const links = [
     link: '/about',
   },
   {
-    label: 'Results',
-    link: '/results',
-  },
-  {
     label: 'Features',
     link: '/features',
+  },
+  {
+    label: 'Results',
+    link: '/results',
   },
 ];
 

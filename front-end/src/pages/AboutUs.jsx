@@ -1,22 +1,26 @@
-import { Avatar, Badge, Table, Group, Text, Select, ScrollArea } from '@mantine/core';
-
-interface UsersTableProps {
-  data: { avatar: string; name: string; job: string; email: string; role: string }[];
-}
+import {
+  Avatar,
+  Badge,
+  Table,
+  Group,
+  Text,
+  Select,
+  ScrollArea,
+} from '@mantine/core';
 
 const rolesData = ['Manager', 'Collaborator', 'Contractor'];
 
-export function UsersRolesTable({ data }: UsersTableProps) {
+const AboutUs = (data) => {
   const rows = data.map((item) => (
     <tr key={item.name}>
       <td>
-        <Group spacing="sm">
+        <Group spacing='sm'>
           <Avatar size={40} src={item.avatar} radius={40} />
           <div>
-            <Text fz="sm" fw={500}>
+            <Text fz='sm' fw={500}>
               {item.name}
             </Text>
-            <Text fz="xs" c="dimmed">
+            <Text fz='xs' c='dimmed'>
               {item.email}
             </Text>
           </div>
@@ -24,14 +28,14 @@ export function UsersRolesTable({ data }: UsersTableProps) {
       </td>
 
       <td>
-        <Select data={rolesData} defaultValue={item.role} variant="unstyled" />
+        <Select data={rolesData} defaultValue={item.role} variant='unstyled' />
       </td>
       <td>{Math.floor(Math.random() * 6 + 5)} days ago</td>
       <td>
         {Math.random() > 0.5 ? (
           <Badge fullWidth>Active</Badge>
         ) : (
-          <Badge color="gray" fullWidth>
+          <Badge color='gray' fullWidth>
             Disabled
           </Badge>
         )}
@@ -41,7 +45,7 @@ export function UsersRolesTable({ data }: UsersTableProps) {
 
   return (
     <ScrollArea>
-      <Table miw={800} verticalSpacing="sm">
+      <Table miw={800} verticalSpacing='sm'>
         <thead>
           <tr>
             <th>Employee</th>
@@ -53,4 +57,6 @@ export function UsersRolesTable({ data }: UsersTableProps) {
       </Table>
     </ScrollArea>
   );
-}
+};
+
+export default AboutUs;

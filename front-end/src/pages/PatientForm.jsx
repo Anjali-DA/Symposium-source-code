@@ -8,14 +8,11 @@ import {
   Title,
   Paper,
   SimpleGrid,
+  Modal,
+  Text,
 } from '@mantine/core';
-import {
-  useForm,
-  isNotEmpty,
-  isEmail,
-  isInRange,
-  matches,
-} from '@mantine/form';
+import { useForm } from '@mantine/form';
+import { useState } from 'react';
 import axios from 'axios';
 
 const PatientForm = () => {
@@ -52,6 +49,8 @@ const PatientForm = () => {
     },
   });
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <Paper
       mx='auto'
@@ -87,8 +86,8 @@ const PatientForm = () => {
             treatment,
           } = form.values;
           const requestDataBody = {
-            PatientID: Math.random().toString(36).slice(0, 10),
-            Age: age,
+            PatientID: Math.random().toString(36).slice(2, 10),
+            Age: Number(age),
             Sex: sex,
             MedicalHistory: medicalHistory,
             HospitalizationData: hospitalizationData,
@@ -101,7 +100,6 @@ const PatientForm = () => {
             Treatment: treatment,
           };
           console.log(requestDataBody);
-          form.reset();
           // try {
           //   const URL = 'someURL.com/getData';
           //   const res = await fetch(URL, {
@@ -123,6 +121,7 @@ const PatientForm = () => {
           } catch (e) {
             console.log(e);
           }
+          setModalOpen(true);
         }}
         style={{
           display: 'flex',
@@ -240,9 +239,36 @@ const PatientForm = () => {
           />
         </SimpleGrid>
         <Button type='submit' w={420} fullWidth mt={20}>
-          Submit
+          Predict
         </Button>
       </form>
+      <Modal
+        centered
+        opened={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+          form.reset();
+        }}
+        title='Report'
+        closeOnClickOutside={true}
+        closeOnEscape={true}
+      >
+        <Paper bg={'blue'} p={20}>
+          <Text>Name : {form.values.name}</Text>
+          <Text>Age : {form.values.age}</Text>
+          <Text>Sex : {form.values.sex}</Text>
+          <Text>Medical History : {form.values.medicalHistory}</Text>
+          <Text>Hospitalization Data : {form.values.hospitalizationData}</Text>
+          <Text>Imaging Data : {form.values.imagingData}</Text>
+          <Text>Microbiology Data : {form.values.microbiologyData}</Text>
+          <Text>Laboratory Data : {form.values.laboratoryData}</Text>
+          <Text>Risk Factors : {form.values.riskFactors}</Text>
+          <Text>Symptoms : {form.values.symptoms}</Text>
+          <Text>Treatments : {form.values.treatment}</Text>
+          <Text>Signs : {form.values.signs}</Text>
+          <Text>Probable Infections : Anaemia</Text>
+        </Paper>
+      </Modal>
     </Paper>
   );
 };

@@ -1,5 +1,19 @@
-import { ThemeIcon, Text, Title, Container, SimpleGrid, createStyles, rem } from '@mantine/core';
-import { IconGauge, IconCookie, IconUser, IconMessage2, IconLock } from '@tabler/icons-react';
+import {
+  ThemeIcon,
+  Text,
+  Title,
+  Container,
+  SimpleGrid,
+  createStyles,
+  rem,
+} from '@mantine/core';
+import {
+  IconGauge,
+  IconCookie,
+  IconUser,
+  IconMessage2,
+  IconLock,
+} from '@tabler/icons-react';
 
 export const MOCKDATA = [
   {
@@ -34,27 +48,21 @@ export const MOCKDATA = [
   },
 ];
 
-interface FeatureProps {
-  icon: React.FC<any>;
-  title: React.ReactNode;
-  description: React.ReactNode;
-}
-
-export function Feature({ icon: Icon, title, description }: FeatureProps) {
+const Feature = ({ icon: Icon, title, description }) => {
   return (
     <div>
-      <ThemeIcon variant="light" size={40} radius={40}>
-        <Icon size="1.1rem" stroke={1.5} />
+      <ThemeIcon variant='light' size={40} radius={40}>
+        <Icon size='1.1rem' stroke={1.5} />
       </ThemeIcon>
-      <Text mt="sm" mb={7}>
+      <Text mt='sm' mb={7}>
         {title}
       </Text>
-      <Text size="sm" color="dimmed" sx={{ lineHeight: 1.6 }}>
+      <Text size='sm' color='dimmed' sx={{ lineHeight: 1.6 }}>
         {description}
       </Text>
     </div>
   );
-}
+};
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -83,22 +91,18 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface FeaturesGridProps {
-  title: React.ReactNode;
-  description: React.ReactNode;
-  data?: FeatureProps[];
-}
-
-export function FeaturesGrid({ title, description, data = MOCKDATA }: FeaturesGridProps) {
+const Features = ({ title, description, data = MOCKDATA }) => {
   const { classes } = useStyles();
-  const features = data.map((feature, index) => <Feature {...feature} key={index} />);
+  const features = data.map((feature, index) => (
+    <Feature {...feature} key={index} />
+  ));
 
   return (
     <Container className={classes.wrapper}>
       <Title className={classes.title}>{title}</Title>
 
       <Container size={560} p={0}>
-        <Text size="sm" className={classes.description}>
+        <Text size='sm' className={classes.description}>
           {description}
         </Text>
       </Container>
@@ -116,4 +120,6 @@ export function FeaturesGrid({ title, description, data = MOCKDATA }: FeaturesGr
       </SimpleGrid>
     </Container>
   );
-}
+};
+
+export default Features;
