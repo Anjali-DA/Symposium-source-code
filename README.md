@@ -43,11 +43,12 @@ The use of a dummy dataset, which may not fully represent the complexities of re
 
 
 # Results:
--SVM : Accuracy 89%,Precision 75%,F1-Score 77%,ROC AUC  is 0.86
+Random Forest Classification : Accuracy 96.67%,Precision 83%,F1-Score 88%,Recall 94%, ROC AUC  is 0.86        
+The confusion matrix revealed that the model correctly predicted 38/45 instances of HAIs, while 8 instances were classified as false negatives, correctly predicted 79/90 instances of non-hospital-associated infections, while 11 instances were classified as false positives.
+Random Forest Classifier is a promising ML algorithm for HAI risk prediction using EHR data, and could potentially assist healthcare providers in identifying patients at high risk for HAI and implementing preventative measures to reduce the incidence of HAI
+ACCEPTABILITY: It is widely accepted by healthcare professionals and researchers as a valuable approach to enhance patient safety and infection control.
+RELIABILITY & VALIDITY:providing consistent and accurate predictions based on robust statistical analysis of comprehensive electronic health records.
 
--The confusion matrix revealed that the model correctly predicted 37/45 instances of HAIs, while 8 instances were classified as false negatives, correctly predicted 79/90 instances of non-hospital-associated infections, while 11 instances were classified as false positives.
-
--Results suggest that SVM is a promising machine learning algorithm for HAI risk prediction using EHR data, and could potentially assist healthcare providers in identifying patients at high risk for HAI and implementing preventative measures to reduce the incidence of HAI
 
 # Conclusion:
 -After generating the data, we successfully pre-processed the data with python libraries- converted al the text to numeric data.
