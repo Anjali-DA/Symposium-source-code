@@ -100,7 +100,10 @@ const PatientForm = () => {
           form.reset();
           try {
             const URL = 'someURL.com/getData';
-            const res = await fetch(URL);
+            const res = await fetch(URL, {
+              method: 'POST',
+              body: requestDataBody,
+            });
             if (!res.ok) {
               return new Error('Error in posting data');
             }
@@ -204,7 +207,9 @@ const PatientForm = () => {
             placeholder='Treatment Done'
             {...form.getInputProps('treatment')}
           />
-          <Button type='submit' w={200}>Submit</Button>
+          <Button type='submit' w={200}>
+            Submit
+          </Button>
         </Group>
       </form>
     </Paper>
