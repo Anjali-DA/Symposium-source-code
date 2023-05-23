@@ -8,6 +8,7 @@ import {
   rem,
   Text,
   Button,
+  Anchor,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NavLink } from 'react-router-dom';
@@ -89,9 +90,9 @@ const Navbar = () => {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <NavLink
+    <Anchor
       key={link.label}
-      to={link.link}
+      href={link.link}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
@@ -102,7 +103,7 @@ const Navbar = () => {
       }}
     >
       {link.label}
-    </NavLink>
+    </Anchor>
   ));
 
   return (

@@ -100,6 +100,19 @@ const PatientForm = () => {
             Treatment: treatment,
           };
           console.log(requestDataBody);
+          console.log({
+            age: typeof age,
+            sex: typeof sex,
+            medicalHistory: typeof medicalHistory,
+            hospitalizationData: typeof hospitalizationData,
+            laboratoryData: typeof laboratoryData,
+            imagingData: typeof imagingData,
+            microbiologyData: typeof microbiologyData,
+            riskFactors: typeof riskFactors,
+            symptoms: typeof symptoms,
+            signs: typeof signs,
+            treatment: typeof signs,
+          });
           // try {
           //   const URL = 'someURL.com/getData';
           //   const res = await fetch(URL, {

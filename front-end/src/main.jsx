@@ -8,7 +8,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <MantineProvider
       withGlobalStyles
       withNormalizeCSS
-      theme={{ fontFamily: 'Roboto' }}
+      theme={{
+        fontFamily: `Ubuntu`,
+      }}
     >
       <App />
     </MantineProvider>

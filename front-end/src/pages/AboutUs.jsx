@@ -1,61 +1,62 @@
-import {
-  Avatar,
-  Badge,
-  Table,
-  Group,
-  Text,
-  Select,
-  ScrollArea,
-} from '@mantine/core';
+import { Text, Title, Paper } from '@mantine/core';
+import Card from './../components/Card';
 
-const rolesData = ['Manager', 'Collaborator', 'Contractor'];
+const contributors = [
+  {
+    name: 'Dishant Yadav',
+    github: 'dishant-yadav',
+    role: 'Frontend',
+  },
+  {
+    name: 'Sriya',
+    github: 'sriya@mail.com',
+    role: 'Frontend',
+  },
+  {
+    name: 'Anjali',
+    github: 'anjali@mail.com',
+    role: 'ML',
+  },
+  {
+    name: 'Naveen',
+    github: 'naveen@mail.com',
+    role: 'ML',
+  },
+];
 
-const AboutUs = (data) => {
-  const rows = data.map((item) => (
-    <tr key={item.name}>
-      <td>
-        <Group spacing='sm'>
-          <Avatar size={40} src={item.avatar} radius={40} />
-          <div>
-            <Text fz='sm' fw={500}>
-              {item.name}
-            </Text>
-            <Text fz='xs' c='dimmed'>
-              {item.email}
-            </Text>
-          </div>
-        </Group>
-      </td>
-
-      <td>
-        <Select data={rolesData} defaultValue={item.role} variant='unstyled' />
-      </td>
-      <td>{Math.floor(Math.random() * 6 + 5)} days ago</td>
-      <td>
-        {Math.random() > 0.5 ? (
-          <Badge fullWidth>Active</Badge>
-        ) : (
-          <Badge color='gray' fullWidth>
-            Disabled
-          </Badge>
-        )}
-      </td>
-    </tr>
-  ));
-
+const AboutUs = () => {
   return (
-    <ScrollArea>
-      <Table miw={800} verticalSpacing='sm'>
-        <thead>
-          <tr>
-            <th>Employee</th>
-            <th>Role</th>
-            <th>Contact</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </Table>
-    </ScrollArea>
+    <Paper w='100vw' h={'100vh'} bg={'blue'} pl={40} pt={40}>
+      <Title
+        order={3}
+        size='h1'
+        underline
+        sx={{ textShadow: '2px 2px 4px #00000050' }}
+      >
+        About the project
+      </Title>
+      <Text>
+        This is a project about determing This is a project about determing This
+        This is a project about determing This is a project about determing is a
+        project about determing This is a project about determing project about
+        determing This is a project about determing
+        <span style={{ textDecoration: 'underline' }}>HAI</span>
+      </Text>
+      <Title
+        order={3}
+        size='h1'
+        underline
+        sx={{ textShadow: '2px 2px 4px #00000050' }}
+      >
+        Contributors
+      </Title>
+      {/*
+        {
+          contributors.map((contributor, index) => {
+        return <Card name={contributor.name} />;
+          })}
+           */}
+    </Paper>
   );
 };
 
