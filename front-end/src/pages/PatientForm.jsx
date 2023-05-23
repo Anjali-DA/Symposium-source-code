@@ -118,6 +118,7 @@ const PatientForm = () => {
       >
         <Group w={300}>
           <NumberInput
+            w={200}
             withAsterisk
             variant='filled'
             label='Age'
@@ -125,6 +126,7 @@ const PatientForm = () => {
             {...form.getInputProps('age')}
           />
           <Select
+            w={200}
             withAsterisk
             label='Sex'
             variant='filled'
@@ -138,24 +140,28 @@ const PatientForm = () => {
             {...form.getInputProps('sex')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Medical History'
             placeholder='Medical'
             {...form.getInputProps('medicalHistory')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Hospitalization Data'
             placeholder='Hospitalization'
             {...form.getInputProps('hospitalizationData')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Laboratory Data'
             placeholder='Laboratory'
             {...form.getInputProps('laboratoryData')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Imaging Data'
             placeholder='Imaging'
@@ -164,38 +170,41 @@ const PatientForm = () => {
         </Group>
         <Group w={300}>
           <TextInput
+            w={200}
             variant='filled'
             label='Microbiology Data'
             placeholder='Microbiology'
             {...form.getInputProps('microbiologyData')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Risk Factors'
             placeholder='Risks'
             {...form.getInputProps('riskFactors')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Symptoms'
             placeholder='Symptoms Faced'
             {...form.getInputProps('symptoms')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Signs'
             placeholder='Signs'
             {...form.getInputProps('signs')}
           />
           <TextInput
+            w={200}
             variant='filled'
             label='Treatment'
             placeholder='Treatment Done'
             {...form.getInputProps('treatment')}
           />
-          <Group position='right'>
-            <Button type='submit'>Submit</Button>
-          </Group>
+          <Button type='submit' w={200}>Submit</Button>
         </Group>
       </form>
     </Paper>
