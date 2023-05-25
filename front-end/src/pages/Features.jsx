@@ -1,125 +1,56 @@
-import {
-  ThemeIcon,
-  Text,
-  Title,
-  Container,
-  SimpleGrid,
-  createStyles,
-  rem,
-} from '@mantine/core';
-import {
-  IconGauge,
-  IconCookie,
-  IconUser,
-  IconMessage2,
-  IconLock,
-} from '@tabler/icons-react';
+import { Timeline, Text } from '@mantine/core';
+import { IconGitBranch, IconGitPullRequest, IconGitCommit, IconMessageDots } from '@tabler/icons-react';
 
-export const MOCKDATA = [
-  {
-    icon: IconGauge,
-    title: 'Extreme performance',
-    description:
-      'This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit',
-  },
-  {
-    icon: IconUser,
-    title: 'Privacy focused',
-    description:
-      'People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma',
-  },
-  {
-    icon: IconCookie,
-    title: 'No third parties',
-    description:
-      'They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves',
-  },
-  {
-    icon: IconLock,
-    title: 'Secure by default',
-    description:
-      'Although it still can’t fly, its jumping power is outstanding, in Alola the mushrooms on Paras don’t grow up quite right',
-  },
-  {
-    icon: IconMessage2,
-    title: '24/7 Support',
-    description:
-      'Rapidash usually can be seen casually cantering in the fields and plains, Skitty is known to chase around after its own tail',
-  },
-];
-
-const Feature = ({ icon: Icon, title, description }) => {
+function Features() {
   return (
-    <div>
-      <ThemeIcon variant='light' size={40} radius={40}>
-        <Icon size='1.1rem' stroke={1.5} />
-      </ThemeIcon>
-      <Text mt='sm' mb={7}>
-        {title}
-      </Text>
-      <Text size='sm' color='dimmed' sx={{ lineHeight: 1.6 }}>
-        {description}
-      </Text>
-    </div>
+    <Timeline active={1} bulletSize={24} lineWidth={2}>
+      <Timeline.Item bullet={<IconGitBranch size={12} />} title="HAI Prediction">
+        <Text color="dimmed" size="sm">our goal is to predict HAI . <Text variant="link" component="span" inherit>using ML</Text> using ML</Text>
+      </Timeline.Item>
+
+      <Timeline.Item bullet={<IconGitCommit size={12} />} title="API Features Column">
+        <Text color="dimmed" size="sm">We need to define the features (input variables) that will be <Text variant="link" component="span" inherit>used in the prediction</Text></Text>
+        </Timeline.Item>
+
+
+      <Timeline.Item title="Splitting Data" bullet={<IconGitPullRequest size={12} />} lineVariant="dashed">
+        <Text color="dimmed" size="sm">After generating the dataset, <Text variant="link" component="span" inherit>we divided it into numerical and textual data</Text></Text>
+       </Timeline.Item>
+
+
+      <Timeline.Item title="Text Cleaning" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>I performed text cleaning techniques such as </Text>removing punctuation, converting capital letters to lowercase, and removing stop words</Text>
+       </Timeline.Item>
+
+      <Timeline.Item title="Tokenization" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>The textual data was tokenized,</Text> which means converting the text into its root or base form </Text>
+        </Timeline.Item>
+
+      <Timeline.Item title="Vectorization" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>The tokenized text was transformed</Text>into a numerical representation </Text>
+        </Timeline.Item>
+
+      <Timeline.Item title="Standardization" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>All the features (numerical and textual)</Text> were combined and standardized</Text>
+        </Timeline.Item>
+
+       <Timeline.Item title="Train-Test Split" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>The combined dataset was </Text>split into training and testing sets</Text>
+        </Timeline.Item>
+      
+      <Timeline.Item title="Training the Model" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>We trained the model using a random forest algorithm,</Text>which is an ensemble method based on decision trees</Text>
+        </Timeline.Item>
+
+       <Timeline.Item title="Saving the Model" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>Once the model is trained,</Text> we saved it using the pickle library</Text>
+        </Timeline.Item>
+     
+       <Timeline.Item title="FastAPI Integration" bullet={<IconMessageDots size={12} />}>
+        <Text color="dimmed" size="sm"><Text variant="link" component="span" inherit>sed FastAPI, a Python web framework,</Text>to build the API</Text>
+        </Timeline.Item>
+
+    </Timeline>
   );
-};
-
-const useStyles = createStyles((theme) => ({
-  wrapper: {
-    paddingTop: `calc(${theme.spacing.xl} * 4)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 4)`,
-  },
-
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
-    marginBottom: theme.spacing.md,
-    textAlign: 'center',
-
-    [theme.fn.smallerThan('sm')]: {
-      fontSize: rem(28),
-      textAlign: 'left',
-    },
-  },
-
-  description: {
-    textAlign: 'center',
-
-    [theme.fn.smallerThan('sm')]: {
-      textAlign: 'left',
-    },
-  },
-}));
-
-const Features = ({ title, description, data = MOCKDATA }) => {
-  const { classes } = useStyles();
-  const features = data.map((feature, index) => (
-    <Feature {...feature} key={index} />
-  ));
-
-  return (
-    <Container className={classes.wrapper}>
-      <Title className={classes.title}>{title}</Title>
-
-      <Container size={560} p={0}>
-        <Text size='sm' className={classes.description}>
-          {description}
-        </Text>
-      </Container>
-
-      <SimpleGrid
-        mt={60}
-        cols={3}
-        spacing={50}
-        breakpoints={[
-          { maxWidth: 980, cols: 2, spacing: 'xl' },
-          { maxWidth: 755, cols: 1, spacing: 'xl' },
-        ]}
-      >
-        {features}
-      </SimpleGrid>
-    </Container>
-  );
-};
-
+}
 export default Features;
