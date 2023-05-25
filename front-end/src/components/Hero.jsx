@@ -33,7 +33,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: rem(44),
+    fontSize: rem(30),
     lineHeight: 1.2,
     fontWeight: 900,
 
@@ -74,7 +74,7 @@ const Hero = () => {
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>
+            <Title className={classes.title} order={3} size={"h5"}>
               Unlocking  <span className={classes.highlight}>the Power of Machine Learning:</span> React <br />{' '}
               Predicting HAI Risk using EHR Data
             </Title>
@@ -83,30 +83,6 @@ const Hero = () => {
               By harnessing the power of electronic health record (EHR) data,we can accurately assess individual
               HAI risk and take proactive measures to prevent potential HAI-related issues.
             </Text>
-
-            <List
-              mt={30}
-              spacing='sm'
-              size='sm'
-              icon={
-                <ThemeIcon size={20} radius='xl'>
-                  <IconCheck size={rem(12)} stroke={1.5} />
-                </ThemeIcon>
-              }
-            >
-              <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all
-                components and hooks export types
-              </List.Item>
-              <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you
-                can use Mantine in any project
-              </List.Item>
-              <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when
-                user navigates with keyboard
-              </List.Item>
-            </List>
 
             <Group mt={30}>
               <Button
