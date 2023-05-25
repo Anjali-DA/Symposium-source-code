@@ -75,8 +75,8 @@ const Hero = () => {
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              A <span className={classes.highlight}>modern</span> React <br />{' '}
-              components library
+              Unlocking  <span className={classes.highlight}>the Power of Machine Learning:</span> React <br />{' '}
+              Predicting HAI Risk using EHR Data
             </Title>
             <Text color='dimmed' mt='md'>
               Build fully functional accessible web applications faster than
