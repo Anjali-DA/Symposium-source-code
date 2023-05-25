@@ -79,9 +79,9 @@ const Hero = () => {
               Predicting HAI Risk using EHR Data
             </Title>
             <Text color='dimmed' mt='md'>
-              Build fully functional accessible web applications faster than
-              ever – Mantine includes more than 120 customizable components and
-              hooks to cover you in any situation
+              At [R-Prediction], we are revolutionizing healthcare with our groundbreaking machine learning model for HAI Risk prediction.
+              By harnessing the power of electronic health record (EHR) data,we can accurately assess individual
+              HAI risk and take proactive measures to prevent potential HAI-related issues.
             </Text>
 
             <List
