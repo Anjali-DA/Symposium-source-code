@@ -86,7 +86,8 @@ const PatientForm = () => {
             treatment,
           } = form.values;
           const requestDataBody = {
-            PatientID: Math.random().toString(36).slice(2, 10),
+            // PatientID: Math.random().toString(36).slice(2, 10),
+            patientID: Math.floor(Math.random() * 900) + 100,
             Age: Number(age),
             Sex: sex,
             MedicalHistory: medicalHistory,
@@ -127,8 +128,13 @@ const PatientForm = () => {
           // } catch (e) {
           //   console.log(e);
           // }
+          const url = 'http://127.0.0.1:8000/hai_prediction'
           try {
-            axios.post(url, requestDataBody).then((response) => {
+            axios.post(url, requestDataBody, {mode: 'no-cors' }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then((response) => {
               console.log(response.data);
             });
           } catch (e) {
