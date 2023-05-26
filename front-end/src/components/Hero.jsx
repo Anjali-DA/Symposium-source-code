@@ -95,7 +95,7 @@ const Hero = () => {
               }
             >
               <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all
+                <b>TypeScript based</b> – build type safe app, all
                 components and hooks export types
               </List.Item>
               <List.Item>
