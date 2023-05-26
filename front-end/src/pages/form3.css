@@ -1,0 +1,90 @@
+/* style.css */
+
+.container {
+    height: 200px;
+    width: 900px;
+    /* margin-left: calc(50vw - 150px);
+    margin-top: calc(50vh - 100px); */
+    /* margin-top: calc(30vh - 100px); */
+    padding-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+/* Form container */
+.form-container {
+    background-color: #f7fafc;
+    padding: 40px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    height: 80vh;
+    /* height: 500px; */
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+
+}
+
+
+.form-container input[type="text"],
+.form-container input[type="number"] {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    outline: none;
+    border: 2px solid #cfd8e3;
+    line-height: 2;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="number"]:focus {
+    border-color: #4c51bf;
+}
+
+
+.container button {
+    width: 100%;
+    height: 90px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #4c51bf;
+    color: #fff;
+    border: none;
+    font-size: 40px;
+    text-align: center;
+    line-height: 1.5;
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    user-select: none;
+}
+
+
+
+.container button:hover {
+    background-color: #e0dff2;
+    color: #4c51bf;
+    font-size: 43px;
+    font-weight: bold;
+
+}
+
+/* Additional styles */
+.form {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://th.bing.com/th/id/OIP.gvrONS9Pg7c5y1mDhPAOHAHaHa?pid=ImgDet&rs=1');
+    height: 100vh;
+}
